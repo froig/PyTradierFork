@@ -24,7 +24,15 @@ class Option(Quote):
         
         
         """
+        self._symbols = []
+
+        for symbol in symbols:
+            self._symbols.append(symbol)
+
+        self._symbol_load = ','.join(self._symbols)
+
         self.__dict__.update(base.__dict__)
+        super().__init__(base, self._symbol_load)
 
     def strike(self, **config):
         """ Return the strike price of the option. """
